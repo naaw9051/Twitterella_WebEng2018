@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+
+
+<h:body>
+
+<h:panelGrid id="grid" columns="2">
+
+<h:outputLabel value="Name:" for="name"/>
+<h:inputText id="name" value="#{userBean.user.name}"/>
+<h:outputLabel value="Password:" for="password"/>
+<h:inputText id="password" value="#{userBean.user.password}"/>
+<h:commandButton id="login" action="#{userBean.loginUser()}" value="Login"/>
+
+</h:panelGrid>
+
+
+
+</h:body>
+</html>
