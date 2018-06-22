@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<h:head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to Twitterella</title>
+</h:head>
 
-</body>
+<h:body>
+    <header>
+        <h1>Twitterella</h1>
+        <button id="loginButton"></button>
+        <nav>
+            <a href="/HomePage">Start</a> |
+            <a href="/ProfilePage">Mein Profil</a> |
+            <a href="/LogoutPage">Logout</a> 
+        </nav>
+    </header>
+    <h2>Die beliebtesten Posts</h2>
+    
+     <!-- make every message clickable with href to individual MessagePage-->
+
+    <h:form>
+         <h:dataTable value = "#{messageManager.getAllMessages}" var = "message">
+            
+            <h:column>    				
+               <f:facet name = "header">Nachricht</f:facet>    				
+               #{message.name}
+            </h:column>
+            
+            <h:column>
+               <f:facet name = "header">Likes</f:facet>
+               #{message.likes}
+            </h:column>
+            
+            <h:column>
+               <f:facet name = "header">Verfasser</f:facet>
+               #{message.userName}
+            </h:column>
+         </h:dataTable>
+      </h:form>
+</h:body>
+
 </html>
