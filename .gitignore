@@ -83,5 +83,9 @@ atlassian-ide-plugin.xml
 # ----
 /*.log
 
+# Class
+# ----
+*.class
+
 # oh-my-zsh gradle plugin
 .gradletasknamecache
