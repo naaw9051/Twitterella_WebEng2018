@@ -10,6 +10,10 @@ public class MessageManager {
 	public List<Message> getAllMessages() {
 		return DAOFactory.getMessageDAO().getAllMessages();
 	}
+	
+	public List<Message> findAllMessages(String userName) {
+		return DAOFactory.getMessageDAO().findAllMessages(userName);
+	}
 
 	public void addMessage(Message message) {
 		DAOFactory.getMessageDAO().addMessage(message);

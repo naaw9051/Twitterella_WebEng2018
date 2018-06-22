@@ -26,8 +26,7 @@ public class MySQLUserDAO implements UserDAO {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				User user = new User();
-
-				user.setID(rs.getInt("id"));
+				
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
 
@@ -43,12 +42,11 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public void addUser(User newUser) {
 		// Hier Methoden für das Inserten in die Datenbank
-		String query = "INSERT INTO USERS VALUES (?,?,?)";
+		String query = "INSERT INTO USERS VALUES (?,?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setInt(1, newUser.getID());
-			stmt.setString(2, newUser.getName());
-			stmt.setString(3, newUser.getPassword());
+			stmt.setString(1, newUser.getName());
+			stmt.setString(2, newUser.getPassword());
 
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -68,7 +66,6 @@ public class MySQLUserDAO implements UserDAO {
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				user.setID(rs.getInt("id"));
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
 			}
@@ -79,14 +76,13 @@ public class MySQLUserDAO implements UserDAO {
 	}
 
 	@Override
-	public void updateUser(User newUser, int oldUserID) {
+	public void updateUser(User newUser, String oldUserName) {
 		// Hier Methode für das Aktualisieren in der Datenbank
-		String query = "UPDATE USERS SET name=?, password=? WHERE id=?";
+		String query = "UPDATE USERS SET password=? WHERE name=?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setString(1, newUser.getName());
-			stmt.setString(2, newUser.getPassword());
-			stmt.setInt(3, oldUserID);
+			stmt.setString(1, newUser.getPassword());
+			stmt.setString(2, oldUserName);
 
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -97,10 +93,10 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public void deleteUser(User user) {
 		// Hier Methoden für das Löschen in der Datenbank
-		String query = "DELETE FROM USERS WHERE id=?";
+		String query = "DELETE FROM USERS WHERE name=?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setInt(1, user.getID());
+			stmt.setString(1, user.getName());
 
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {

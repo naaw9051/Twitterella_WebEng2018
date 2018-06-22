@@ -3,15 +3,10 @@ package webeng.tranferobjects;
 import java.io.Serializable;
 
 public class User implements Serializable {
-	private int id;
 	private String name;
 	private String password;
 
 	public User() {
-	}
-
-	public void setID(int id) {
-		this.id = id;
 	}
 
 	public void setName(String name) {
@@ -20,10 +15,6 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public int getID() {
-		return this.id;
 	}
 
 	public String getName() {
@@ -36,10 +27,6 @@ public class User implements Serializable {
 
 	public boolean validate() {
 		boolean valid = true;
-
-		if (this.id == 0 || !isNumeric("" + this.id)) {
-			valid = false;
-		}
 		if (this.name == null || this.name.contains(" ")) {
 			valid = false;
 		}

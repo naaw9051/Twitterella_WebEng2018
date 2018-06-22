@@ -20,16 +20,16 @@ public class UserManager {
 		return DAOFactory.getUserDAO().getUser(name);
 	}
 
-	public void updateUser(User user, int id) {
-		DAOFactory.getUserDAO().updateUser(user, id);
+	public void updateUser(User user, String name) {
+		DAOFactory.getUserDAO().updateUser(user, name);
 	}
 
-	public boolean containsUser(int id) {
+	public boolean containsUser(String name) {
 		List<User> users = this.getAllUsers();
 		boolean userInList = false;
 
 		for (User user : users) {
-			if (user.getID() == id) {
+			if (user.getName() == name) {
 				userInList = true;
 			}
 		}

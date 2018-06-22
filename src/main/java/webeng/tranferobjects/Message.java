@@ -7,7 +7,7 @@ public class Message implements Serializable {
 	private int id;
 	private String message;
 	private int likes;
-	private int userID;
+	private String userName;
 	//private Blob picture;
 
 	public Message() {
@@ -25,8 +25,8 @@ public class Message implements Serializable {
 		this.likes = likes;
 	}
 
-	public void setUserID(int userID) {
-		this.userID = userID;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	//public void setPicture(Blob picture){
@@ -45,8 +45,8 @@ public class Message implements Serializable {
 		return this.likes;
 	}
 
-	public int getUserID() {
-		return this.userID;
+	public String getUserName() {
+		return this.userName;
 	}
 
 	//public Blob getPicture(){
@@ -65,7 +65,7 @@ public class Message implements Serializable {
 		if (this.likes < 0) {
 			valid = false;
 		}
-		if (this.userID <= 0 || !isNumeric("" + this.id)) {
+		if (this.userName == null || this.message.equals(" ")) {
 			valid = false;
 		}
 		return valid;
