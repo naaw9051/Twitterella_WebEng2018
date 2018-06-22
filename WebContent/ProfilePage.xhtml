@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
 
-</body>
+<h:head>
+    <meta charset="ISO-8859-1">
+    <title>Twitterella Profil</title>
+</h:head>
+
+<h:body>
+    <header>
+        <h1>Twitterella</h1>
+        <button id="loginButton"></button>
+        <nav>
+            <a href="/HomePage">Start</a> |
+            <a href="/ProfilePage">Mein Profil</a> |
+            <a href="/LogoutPage">Logout</a> 
+        </nav>
+    </header>
+
+    <h2>Mein Profil</h2>
+
+	<h:form id="profilePicture">      
+         <h:graphicImage value = "/images/jsf-mini-logo.png"/>
+    </h:form>
+
+    <div id="userName">
+        <h:outputText value="#{userBean.name}"/>
+    </div>
+   
+    <ul id="messageList">
+		<ui:repeat value="#{messageManager.findAllMessages(userBean.name)}" var="message">
+			<li>
+				<div><a href="/MessagePage"/> 
+				<h:outputText value="#{message.message}"/>
+				<h:outputText value="#{message.likes}"/>
+				<h:outputText value="#{message.userName}"/>
+				</div>
+			</li>
+		</ui:repeat>
+	</ul>
+
+</h:body>
+
 </html>
