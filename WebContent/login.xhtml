@@ -10,16 +10,15 @@
 
 <h:body>
 
-<h:panelGrid id="grid" columns="2">
-
-<h:outputLabel value="Name:" for="name"/>
-<h:inputText id="name" value="#{userBean.user.name}"/>
-<h:outputLabel value="Password:" for="password"/>
-<h:inputText id="password" value="#{userBean.user.password}"/>
-<h:commandButton id="login" action="#{userBean.loginUser()}" value="Login"/>
-
-</h:panelGrid>
-
+<h:form>
+	<h:panelGrid id="grid" columns="2">
+		<h:outputLabel value="Name:" for="name"/>
+		<h:inputText id="name" value="#{userBean.user.name}"/>
+		<h:outputLabel value="Password:" for="password"/>
+		<h:inputText id="password" value="#{userBean.user.password}"/>
+		<h:commandButton id="login" action="#{userBean.loginUser()}" value="Login"/>
+	</h:panelGrid>
+</h:form>
 
 
 </h:body>
