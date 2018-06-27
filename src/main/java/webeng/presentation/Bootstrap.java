@@ -45,7 +45,7 @@ public class Bootstrap extends HttpServlet {
         	stmt.execute("INSERT INTO USERS VALUES(2,'Nettie', 'NettieIsCool')");
         	stmt.execute("INSERT INTO USERS VALUES(3,'Will','WillIsCool')");
         	stmt.execute("INSERT INTO USERS VALUES(4,'Deborah','DeborahIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES(5,'Sylvie', 'SylvieNettieIsCool')");
+        	stmt.execute("INSERT INTO USERS VALUES(5,'Sylvie', 'SylvieIsCool')");
         	stmt.execute("INSERT INTO USERS VALUES(6,'Jeffery','JefferyIsCool')");
         	
         	stmt.execute("DROP TABLE IF EXISTS MESSAGES");
