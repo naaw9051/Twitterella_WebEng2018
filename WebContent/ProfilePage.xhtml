@@ -12,11 +12,11 @@
 <h:body>
     <header>
         <h1>Twitterella</h1>
-        <button id="loginButton"></button>
+      	<a href="login"><button id="loginButton">Login</button></a>
         <nav>
-            <a href="/HomePage">Start</a> |
-            <a href="/ProfilePage">Mein Profil</a> |
-            <a href="/LogoutPage">Logout</a> 
+            <a href="HomePage">Start</a> |
+            <a href="ProfilePage">Mein Profil</a> |
+            <a href="LogoutPage">Logout</a> 
         </nav>
     </header>
 
@@ -27,16 +27,16 @@
     </h:form>
 
     <div id="userName">
-        <h:outputText value="#{userBean.name}"/>
+        <h:outputText value="#{userBean.user.name}"/>
     </div>
    
     <ul id="messageList">
-		<ui:repeat value="#{messageManager.findAllMessages(userBean.name)}" var="message">
+		<ui:repeat value="#{messagebean.messageManager.findAllMessages(userbean.user,name)}" var="message">
 			<li>
 				<div><a href="/MessagePage"/> 
 				<h:outputText value="#{message.message}"/>
 				<h:outputText value="#{message.likes}"/>
-				<h:outputText value="#{message.userName}"/>
+				<h:outputText value="#{message.userID}"/>
 				</div>
 			</li>
 		</ui:repeat>

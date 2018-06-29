@@ -7,21 +7,21 @@
 <h:body>
     <header>
         <h1>Twitterella</h1>
-        <button id="loginButton"></button>
+        <a href="login"><button id="loginButton">Login</button></a>
         <nav>
-            <a href="/HomePage">Start</a> |
-            <a href="/ProfilePage">Mein Profil</a> |
-            <a href="/LogoutPage">Logout</a>
+            <a href="HomePage">Start</a> |
+            <a href="ProfilePage">Mein Profil</a> |
+            <a href="LogoutPage">Logout</a> 
         </nav>
     </header>
     <h2>Post Details</h2>
     <div id="messageSection">
         <h:form>
-            <h:outputText value="#{message.message}" />
-            <h:outputText value="#{message.likes}" />
-            <h:outputText value="#{message.userName}" />
-            <h:commandButton value="Bearbeiten" action="#{messageManager.updateMessage(someMessage)}"></h:commandButton>
-            <h:commandButton value="LÃ¶schen" action="#{messageManager.deleteMessage(message.id)}"></h:commandButton>
+            <h:outputText value="#{messagebean.message.message}" />
+            <h:outputText value="#{messagebean.message.likes}" />
+            <h:outputText value="#{messagebean.message.userID}" />
+            <h:commandButton value="Bearbeiten" action="#{messagebean.messageManager.updateMessage(someMessage)}"></h:commandButton>
+            <h:commandButton value="Löschen" action="#{messagebean.messageManager.deleteMessage(messagebean.message.id)}"></h:commandButton>
         </h:form>
     </div>
 </h:body>

@@ -12,7 +12,7 @@
 <h:body>
     <header>
         <h1>Twitterella</h1>
-        <button id="loginButton" value="Login"></button>
+        <a href="login.xhtml"><button id="loginButton">Login</button></a>
         <nav>
             <a href="HomePage.xhtml">Start</a> |
             <a href="ProfilePage.xhtml">Mein Profil</a> |
@@ -24,21 +24,21 @@
      <!-- make every message clickable with href to individual MessagePage-->
 
     <h:form>
-         <h:dataTable value = "#{messageManager.getAllMessages}" var = "message">
+         <h:dataTable var = "message" value = "#{messageBean.messages}">
             
             <h:column>    				
                <f:facet name = "header">Nachricht</f:facet>    				
-               #{message.name}
+               <h:outputText value= "#{message.message}"/>
             </h:column>
             
             <h:column>
                <f:facet name = "header">Likes</f:facet>
-               #{message.likes}
+               <h:outputText value= "#{message.likes}"/>
             </h:column>
             
             <h:column>
                <f:facet name = "header">Verfasser</f:facet>
-               #{message.userName}
+               <h:outputText value= "#{message.userID}"/>
             </h:column>
          </h:dataTable>
       </h:form>

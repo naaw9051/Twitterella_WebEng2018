@@ -33,9 +33,11 @@ public class Bootstrap extends HttpServlet {
     }
     
     public void init() throws ServletException {
-        super.init();
+    	super.init();
+        
         Connection connection = (Connection) getServletContext().getAttribute("connection");
         Configuration.setConnection(connection);
+      
         try
         {
         	Statement stmt = Configuration.getConnection().createStatement();
@@ -49,7 +51,7 @@ public class Bootstrap extends HttpServlet {
         	stmt.execute("INSERT INTO USERS VALUES(6,'Jeffery','JefferyIsCool')");
         	
         	stmt.execute("DROP TABLE IF EXISTS MESSAGES");
-        	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGES VARCHAR(255), LIKES INT, USERID INT)");
+        	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGE VARCHAR(255), LIKES INT, USERID INT)");
         	stmt.execute("INSERT INTO MESSAGES VALUES(1,'Wow, what a cool site!!', 12, 3)");
         	stmt.execute("INSERT INTO MESSAGES VALUES(2,'I got a new dog <333', 33, 5)");
         	stmt.execute("INSERT INTO MESSAGES VALUES(3,'omg hi guyysss', 27, 4)");

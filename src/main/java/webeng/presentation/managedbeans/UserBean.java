@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import webeng.businesslogic.UserManager;
 import webeng.tranferobjects.User;
 
-@ManagedBean
+@ManagedBean(name= "userBean")
 public class UserBean implements Serializable {
 	
 	User user;

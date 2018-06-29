@@ -18,15 +18,15 @@ public class MySQLMessageDAO implements MessageDAO {
 	public List<Message> getAllMessages() {
 		// Hier Methode für das Auslesen aller Artikel in der Datenbank
 		List<Message> messages = new ArrayList<Message>();
-		String query = "SELECT * FROM MESSAGES";
-
+		String query = "SELECT * FROM MESSAGES ORDER BY LIKES DESC";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 
 			ResultSet rs = stmt.executeQuery();
+			
 			while (rs.next()) {
 				Message message = new Message();
-
+				
 				message.setID(rs.getInt("id"));
 				message.setMessage(rs.getString("message"));
 				message.setLikes(rs.getInt("likes"));
@@ -38,6 +38,7 @@ public class MySQLMessageDAO implements MessageDAO {
 			e.printStackTrace();
 		}
 
+		System.out.println(messages.size());
 		return messages;
 	}
 
