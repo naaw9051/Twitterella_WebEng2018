@@ -5,18 +5,17 @@
     xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-    <meta charset="ISO-8859-1">
     <title>Twitterella Profil</title>
 </h:head>
 
 <h:body>
     <header>
         <h1>Twitterella</h1>
-      	<a href="login"><button id="loginButton">Login</button></a>
+  		<a href="login.xhtml"><button id="loginButton">Login</button></a>
         <nav>
-            <a href="HomePage">Start</a> |
-            <a href="ProfilePage">Mein Profil</a> |
-            <a href="LogoutPage">Logout</a> 
+            <a href="HomePage.xhtml">Start</a> |
+            <a href="ProfilePage.xhtml">Mein Profil</a> |
+            <a href="LogoutPage.xhtml">Logout</a> 
         </nav>
     </header>
 
@@ -30,13 +29,14 @@
         <h:outputText value="#{userBean.user.name}"/>
     </div>
    
+   <h3>Meine Posts</h3>
     <ul id="messageList">
 		<ui:repeat value="#{messagebean.messageManager.findAllMessages(userbean.user,name)}" var="message">
 			<li>
-				<div><a href="/MessagePage"/> 
+				<div><a href="MessagePage.xhtml"/> 
 				<h:outputText value="#{message.message}"/>
 				<h:outputText value="#{message.likes}"/>
-				<h:outputText value="#{message.userID}"/>
+				<h:outputText value="#{message.userName}"/>
 				</div>
 			</li>
 		</ui:repeat>

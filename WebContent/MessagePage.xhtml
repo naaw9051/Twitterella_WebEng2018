@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
-    <meta charset="ISO-8859-1">
     <title>Twitterella Post</title>
 </h:head>
 <h:body>
     <header>
         <h1>Twitterella</h1>
-        <a href="login"><button id="loginButton">Login</button></a>
+   		<a href="login.xhtml"><button id="loginButton">Login</button></a>
         <nav>
-            <a href="HomePage">Start</a> |
-            <a href="ProfilePage">Mein Profil</a> |
-            <a href="LogoutPage">Logout</a> 
+            <a href="HomePage.xhtml">Start</a> |
+            <a href="ProfilePage.xhtml">Mein Profil</a> |
+            <a href="LogoutPage.xhtml">Logout</a> 
         </nav>
     </header>
     <h2>Post Details</h2>
@@ -21,7 +20,7 @@
             <h:outputText value="#{messagebean.message.likes}" />
             <h:outputText value="#{messagebean.message.userID}" />
             <h:commandButton value="Bearbeiten" action="#{messagebean.messageManager.updateMessage(someMessage)}"></h:commandButton>
-            <h:commandButton value="Löschen" action="#{messagebean.messageManager.deleteMessage(messagebean.message.id)}"></h:commandButton>
+            <h:commandButton value="LÃ¶schen" action="#{messagebean.messageManager.deleteMessage(messagebean.message.id)}"></h:commandButton>
         </h:form>
     </div>
 </h:body>

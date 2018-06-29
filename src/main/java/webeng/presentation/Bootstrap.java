@@ -47,11 +47,11 @@ public class Bootstrap extends HttpServlet {
         	stmt.execute("INSERT INTO USERS VALUES('Nettie', 'NettieIsCool')");
         	stmt.execute("INSERT INTO USERS VALUES('Will','WillIsCool')");
         	stmt.execute("INSERT INTO USERS VALUES('Deborah','DeborahIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES('Sylvie', 'SylvieNettieIsCool')");
+        	stmt.execute("INSERT INTO USERS VALUES('Sylvie', 'SylvieIsCool')");
         	stmt.execute("INSERT INTO USERS VALUES('Jeffery','JefferyIsCool')");
         	
         	stmt.execute("DROP TABLE IF EXISTS MESSAGES");
-        	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGES VARCHAR(255), LIKES INT, USERNAME VARCHAR(255)");
+        	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGE VARCHAR(255), LIKES INT, USERNAME VARCHAR(255))");
         	stmt.execute("INSERT INTO MESSAGES VALUES(1,'Wow, what a cool site!!', 12, 'Will')");
         	stmt.execute("INSERT INTO MESSAGES VALUES(2,'I got a new dog <333', 33, 'Sylvie')");
         	stmt.execute("INSERT INTO MESSAGES VALUES(3,'omg hi guyysss', 27, 'Deborah')");

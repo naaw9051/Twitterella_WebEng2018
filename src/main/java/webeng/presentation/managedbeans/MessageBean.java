@@ -18,7 +18,6 @@ public class MessageBean implements Serializable{
 	public MessageBean(){ 
 		this.messageManager = new MessageManager();
 		this.messages = this.messageManager.getAllMessages();
-		System.out.println(this.messages.get(0).getMessage());
 	}
 	
 	void setMessage(Message message){
@@ -35,10 +34,6 @@ public class MessageBean implements Serializable{
 	
 	public List<Message> getMessages(){
 		return this.messages;
-	}
-	
-	public List<Message> getAllMessages(){
-		return this.messageManager.getAllMessages();
 	}
 	
 	public String save(){

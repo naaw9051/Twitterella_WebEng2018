@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -9,7 +8,17 @@
 
 
 <h:body>
-
+   <header>
+        <h1>Twitterella</h1>
+        <a href="login.xhtml"><button id="loginButton">Login</button></a>
+        <nav>
+            <a href="HomePage.xhtml">Start</a> |
+            <a href="ProfilePage.xhtml">Mein Profil</a> |
+            <a href="LogoutPage.xhtml">Logout</a> 
+        </nav>
+    </header>
+    
+    <h2>Login</h2>
 <h:form>
 	<h:panelGrid id="grid" columns="2">
 		<h:outputLabel value="Name:" for="name"/>

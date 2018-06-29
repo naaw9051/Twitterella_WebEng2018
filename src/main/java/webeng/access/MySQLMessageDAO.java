@@ -37,8 +37,6 @@ public class MySQLMessageDAO implements MessageDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println(messages.size());
 		return messages;
 	}
 
