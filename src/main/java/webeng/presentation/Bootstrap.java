@@ -42,26 +42,26 @@ public class Bootstrap extends HttpServlet {
         {
         	Statement stmt = Configuration.getConnection().createStatement();
         	stmt.execute("DROP TABLE IF EXISTS USERS");
-        	stmt.execute("CREATE TABLE USERS(ID INT PRIMARY KEY, NAME VARCHAR(255), PASSWORD VARCHAR(255))");
-        	stmt.execute("INSERT INTO USERS VALUES(1,'TestUser', '123')");
-        	stmt.execute("INSERT INTO USERS VALUES(2,'Nettie', 'NettieIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES(3,'Will','WillIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES(4,'Deborah','DeborahIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES(5,'Sylvie', 'SylvieIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES(6,'Jeffery','JefferyIsCool')");
+        	stmt.execute("CREATE TABLE USERS(NAME VARCHAR(255) PRIMARY KEY, PASSWORD VARCHAR(255))");
+        	stmt.execute("INSERT INTO USERS VALUES('TestUser', '123')");
+        	stmt.execute("INSERT INTO USERS VALUES('Nettie', 'NettieIsCool')");
+        	stmt.execute("INSERT INTO USERS VALUES('Will','WillIsCool')");
+        	stmt.execute("INSERT INTO USERS VALUES('Deborah','DeborahIsCool')");
+        	stmt.execute("INSERT INTO USERS VALUES('Sylvie', 'SylvieNettieIsCool')");
+        	stmt.execute("INSERT INTO USERS VALUES('Jeffery','JefferyIsCool')");
         	
         	stmt.execute("DROP TABLE IF EXISTS MESSAGES");
-        	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGE VARCHAR(255), LIKES INT, USERID INT)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(1,'Wow, what a cool site!!', 12, 3)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(2,'I got a new dog <333', 33, 5)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(3,'omg hi guyysss', 27, 4)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(4,'what are u doiiiing??', 7, 4)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(5,'im like sooooo bored rn', 5, 4)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(6,'hellooo?', 11, 4)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(7,'@Will i like your style :)', 2, 2)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(8,'Finally, its summer *-*', 17, 5)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(9,'What do you think about my new artwork?', 31, 3)");
-        	stmt.execute("INSERT INTO MESSAGES VALUES(10,'hi', 120, 6)");
+        	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGES VARCHAR(255), LIKES INT, USERNAME VARCHAR(255)");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(1,'Wow, what a cool site!!', 12, 'Will')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(2,'I got a new dog <333', 33, 'Sylvie')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(3,'omg hi guyysss', 27, 'Deborah')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(4,'what are u doiiiing??', 7, 'Deborah')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(5,'im like sooooo bored rn', 5, 'Deborah')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(6,'hellooo?', 11, 'Deborah')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(7,'@Will i like your style :)', 2, 'Nettie')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(8,'Finally, its summer *-*', 17, 'Sylvie')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(9,'What do you think about my new artwork?', 31, 'Will')");
+        	stmt.execute("INSERT INTO MESSAGES VALUES(10,'hi', 120, 'Jeffery')");
         }
         catch(SQLException e)
         {

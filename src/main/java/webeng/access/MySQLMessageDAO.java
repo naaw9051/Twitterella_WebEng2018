@@ -30,7 +30,7 @@ public class MySQLMessageDAO implements MessageDAO {
 				message.setID(rs.getInt("id"));
 				message.setMessage(rs.getString("message"));
 				message.setLikes(rs.getInt("likes"));
-				message.setUserID(rs.getInt("userid"));
+				message.setUserName(rs.getString("username"));
 
 				messages.add(message);
 			}
@@ -43,14 +43,14 @@ public class MySQLMessageDAO implements MessageDAO {
 	}
 
 	@Override
-	public List<Message> findAllMessages(int userID) {
+	public List<Message> findAllMessages(String userName) {
 		// Hier Methode für das Auslesen aller Artikel in der Datenbank
 		List<Message> messages = new ArrayList<Message>();
-		String query = "SELECT * FROM MESSAGES WHERE userid = ?";
+		String query = "SELECT * FROM MESSAGES WHERE username = ?";
 
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setInt(1, userID);
+			stmt.setString(1, userName);
 
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
@@ -59,7 +59,7 @@ public class MySQLMessageDAO implements MessageDAO {
 				message.setID(rs.getInt("id"));
 				message.setMessage(rs.getString("message"));
 				message.setLikes(rs.getInt("likes"));
-				message.setUserID(rs.getInt("userid"));
+				message.setUserName(rs.getString("username"));
 
 				messages.add(message);
 			}
@@ -79,7 +79,7 @@ public class MySQLMessageDAO implements MessageDAO {
 			stmt.setInt(1, newMessage.getID());
 			stmt.setString(2, newMessage.getMessage());
 			stmt.setInt(3, newMessage.getLikes());
-			stmt.setInt(4, newMessage.getUserID());
+			stmt.setString(4, newMessage.getUserName());
 
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -102,7 +102,7 @@ public class MySQLMessageDAO implements MessageDAO {
 				message.setID(rs.getInt("id"));
 				message.setMessage(rs.getString("message"));
 				message.setLikes(rs.getInt("likes"));
-				message.setUserID(rs.getInt("userid"));
+				message.setUserName(rs.getString("username"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
