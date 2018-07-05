@@ -10,7 +10,7 @@ import webeng.tranferobjects.User;
 @ManagedBean(name= "userBean")
 public class UserBean implements Serializable {
 	
-	User user;
+	User user = new User();
 	UserManager userManager = new UserManager();
 	
 	void setUser(User user){
@@ -26,23 +26,20 @@ public class UserBean implements Serializable {
 		return "";
 	}
 	
-	public String loginUser(){
+	public String login(){
 		
-		System.out.println("Login");
+		System.out.println("////////////////////////////////////////Login");
 		
 		this.user = userManager.getUser(user.getName());
 		
-		if(user.validate()){
+		if(user.validate())
+		{
 			//eigene Profilseite wird bei erfolgreichem Login zurückgegeben
-			//z.B. "myProfile.xhtml"
-			return "";
-		}
-		
-		else{
+			return "success";
+		} else{
 			//Fehler: Authentifizierung fehlgeschlagen
-			return "";
-		}
-		
+			return "failed";
+		}	
 	}
 
 }
