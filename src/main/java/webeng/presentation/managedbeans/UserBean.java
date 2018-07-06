@@ -1,9 +1,14 @@
 package webeng.presentation.managedbeans;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import webeng.businesslogic.UserManager;
 import webeng.tranferobjects.User;
@@ -52,14 +57,42 @@ public class UserBean implements Serializable {
 	}
 	
 	public String register() {
-		this.userManager.addUser(this.user);
-		this.user = null;
-		return "login.xhtml";
+		if(nameIsValid(this.user.getName())) {
+			this.userManager.addUser(this.user);
+			this.user = null;
+			return "success";
+		}
+		else {
+			return "failed";
+		}
 	}
 	
 	public String reset() {
 		this.user= new User();
 		return "RegistrationPage.xhtml";
 	}
+	
+	public boolean nameIsValid(String name) {
+		List<User> userList = userManager.getAllUsers();
+		boolean nameIsValid = true;
+		
+		for(User user: userList) {
+			if(user.getName().equals(name)) {
+				nameIsValid = false; 
+			}
+		}
+		return nameIsValid;
+	}
+	
+	
+	public void validateName(FacesContext ctx, UIComponent ui, Object value)
+			throws ValidatorException {
+		
+		if(!nameIsValid((String) value)) {
+			throw new ValidatorException(new FacesMessage("Benutzername existiert bereits.",
+					"Benutzername existiert bereits."));
+		}
+	}
+	
 
 }

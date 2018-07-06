@@ -31,4 +31,20 @@
     	</navigation-case>
     </navigation-rule>
 
+
+    <navigation-rule>
+    	<display-name>RegistrationPage.xhtml</display-name>
+    	<from-view-id>/RegistrationPage.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-action>#{userBean.register}</from-action>
+    		<from-outcome>success</from-outcome>
+    		<to-view-id>/login.xhtml</to-view-id>
+    	</navigation-case>
+    	<navigation-case>
+    		<from-action>#{userBean.register}</from-action>
+    		<from-outcome>failed</from-outcome>
+    		<to-view-id>/RegistrationPage.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
 </faces-config>
