@@ -20,6 +20,14 @@ public class MessageBean implements Serializable{
 		this.messages = this.messageManager.getAllMessages();
 	}
 	
+	void setMessageManager(MessageManager messageManager) {
+		this.messageManager = messageManager;
+	}
+	
+	public MessageManager getMessageManager() {
+		return this.messageManager;
+	}
+	
 	void setMessage(Message message){
 		this.message = message;
 	}
@@ -40,4 +48,5 @@ public class MessageBean implements Serializable{
 		messageManager.addMessage(message);
 		return "";
 	}
+
 }

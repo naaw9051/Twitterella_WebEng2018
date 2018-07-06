@@ -21,17 +21,37 @@
     </div>
    
    <h3>Meine Posts</h3>
-    <ul id="messageList">
-		<ui:repeat value="#{messagebean.messageManager.findAllMessages(userbean.user,name)}" var="message">
-			<li>
-				<div><a href="MessagePage.xhtml"/> 
-				<h:outputText value="#{message.message}"/>
-				<h:outputText value="#{message.likes}"/>
-				<h:outputText value="#{message.userName}"/>
-				</div>
-			</li>
-		</ui:repeat>
-	</ul>
+    <h:form>
+         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessages">
+             <h:column>    				
+               <f:facet name = "header">Nachricht</f:facet>    				
+               <h:outputText value= "#{profileMessages.message}"/>
+            </h:column>
+            
+            <h:column>
+               <f:facet name = "header">Likes</f:facet>
+               <h:outputText value= "#{profileMessages.likes}"/>
+            </h:column>
+            
+             <!--  
+             <h:column>
+               <f:facet name = "details">Details</f:facet>
+               <h:outputText value= "#{profileMessages.id}"/>
+               <h:commandLink value="action">
+ 				<f:param name="id" value="#{profileMessages.id}" />
+				</h:commandLink>
+            </h:column>
+            -->
+            
+            <!--  
+            <h:column>
+               <f:facet name = "header">Verfasser</f:facet>
+               <h:outputText value= "#{profileMessages.userName}"/>
+            </h:column>
+            -->
+            
+         </h:dataTable>
+      </h:form>
 
 </h:body>
 

@@ -39,4 +39,8 @@ public class User implements Serializable {
 	private boolean isNumeric(String str) {
 		return str.matches("-?\\d+(\\.\\d+)?");
 	}
+	
+	public boolean validatePassword(String password) {
+		return (this.password.equals(password));
+	}
 }

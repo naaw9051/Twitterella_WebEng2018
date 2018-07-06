@@ -39,4 +39,6 @@ public class UserManager {
 	public void deleteUser(User user) {
 		DAOFactory.getUserDAO().deleteUser(user);
 	}
+	
+	
 }
