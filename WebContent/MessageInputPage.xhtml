@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Welcome to Twitterella</title>
+</h:head>
+
+<h:body>
+	<h2>Neuer Post</h2>
+	<h:form>
+		<h:panelGrid id="grid" columns="2">
+			<h:inputTextarea row = "10" col = "10" value = "Hello World! Everything is fine!" readonly = "true"/>
+			<h:commandButton id="postMessage" value="Posten" />
+			<h:commandButton id="cancelMessage" value="Abbrechen" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

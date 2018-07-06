@@ -11,7 +11,7 @@ import webeng.businesslogic.MessageManager;
 @ManagedBean(name = "messageBean")
 public class MessageBean implements Serializable{
 
-	Message message;
+	Message message = new Message();
 	MessageManager messageManager;
 	public List<Message> messages = null;
 	
@@ -47,6 +47,11 @@ public class MessageBean implements Serializable{
 	public String save(){
 		messageManager.addMessage(message);
 		return "";
+	}
+	
+	public String openDetails(Message message) {
+		setMessage(message);
+		return "MessagePage.xhtml";
 	}
 
 }

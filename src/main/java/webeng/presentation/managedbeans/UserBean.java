@@ -10,10 +10,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import javax.faces.bean.SessionScoped;
 import webeng.businesslogic.UserManager;
 import webeng.tranferobjects.User;
 
 @ManagedBean(name= "userBean")
+@SessionScoped
 public class UserBean implements Serializable {
 	
 	User user = new User();
