@@ -42,13 +42,13 @@ public class Bootstrap extends HttpServlet {
         {
         	Statement stmt = Configuration.getConnection().createStatement();
         	stmt.execute("DROP TABLE IF EXISTS USERS");
-        	stmt.execute("CREATE TABLE USERS(NAME VARCHAR(255) PRIMARY KEY, PASSWORD VARCHAR(255))");
-        	stmt.execute("INSERT INTO USERS VALUES('TestUser', '123')");
-        	stmt.execute("INSERT INTO USERS VALUES('Nettie', 'NettieIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES('Will','WillIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES('Deborah','DeborahIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES('Sylvie', 'SylvieIsCool')");
-        	stmt.execute("INSERT INTO USERS VALUES('Jeffery','JefferyIsCool')");
+        	stmt.execute("CREATE TABLE USERS(NAME VARCHAR(255) PRIMARY KEY, PASSWORD VARCHAR(255), EMAIL VARCHAR(255))");
+        	stmt.execute("INSERT INTO USERS VALUES('TestUser', '123', 'test@test.de')");
+        	stmt.execute("INSERT INTO USERS VALUES('Nettie', 'NettieIsCool', 'nettie@gmx.de')");
+        	stmt.execute("INSERT INTO USERS VALUES('Will','WillIsCool', 'will@hotmail.de')");
+        	stmt.execute("INSERT INTO USERS VALUES('Deborah','DeborahIsCool', 'deborah@gmail.com')");
+        	stmt.execute("INSERT INTO USERS VALUES('Sylvie', 'SylvieIsCool', 'sylviexxx@xxx.de')");
+        	stmt.execute("INSERT INTO USERS VALUES('Jeffery','JefferyIsCool', 'jeffery@mexico.mx')");
         	
         	stmt.execute("DROP TABLE IF EXISTS MESSAGES");
         	stmt.execute("CREATE TABLE MESSAGES(ID INT PRIMARY KEY, MESSAGE VARCHAR(255), LIKES INT, USERNAME VARCHAR(255))");

@@ -46,5 +46,20 @@ public class UserBean implements Serializable {
 		}	
 	}
 	
+	public String logout() {
+		this.user = null;
+		return "LogoutPage.xhtml";
+	}
+	
+	public String register() {
+		this.userManager.addUser(this.user);
+		this.user = null;
+		return "login.xhtml";
+	}
+	
+	public String reset() {
+		this.user= new User();
+		return "RegistrationPage.xhtml";
+	}
 
 }

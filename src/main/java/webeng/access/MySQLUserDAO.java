@@ -29,7 +29,7 @@ public class MySQLUserDAO implements UserDAO {
 				
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
-
+				user.setEmail(rs.getString("email"));
 				users.add(user);
 			}
 		} catch (SQLException e) {
@@ -42,12 +42,12 @@ public class MySQLUserDAO implements UserDAO {
 	@Override
 	public void addUser(User newUser) {
 		// Hier Methoden für das Inserten in die Datenbank
-		String query = "INSERT INTO USERS VALUES (?,?)";
+		String query = "INSERT INTO USERS VALUES (?,?,?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, newUser.getName());
 			stmt.setString(2, newUser.getPassword());
-
+			stmt.setString(3, newUser.getEmail());
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -68,6 +68,7 @@ public class MySQLUserDAO implements UserDAO {
 			while (rs.next()) {
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

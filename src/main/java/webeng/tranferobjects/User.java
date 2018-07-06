@@ -3,8 +3,10 @@ package webeng.tranferobjects;
 import java.io.Serializable;
 
 public class User implements Serializable {
+	
 	private String name;
 	private String password;
+	private String email;
 
 	public User() {
 	}
@@ -16,6 +18,10 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getName() {
 		return this.name;
@@ -23,6 +29,10 @@ public class User implements Serializable {
 
 	public String getPassword() {
 		return this.password;
+	}
+	
+	public String getEmail() {
+		return this.email;
 	}
 
 	public boolean validate() {
