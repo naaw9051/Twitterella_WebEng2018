@@ -18,8 +18,10 @@
         <a href="login.xhtml"><button id="loginButton">Login</button></a>
         <nav>
             <a href="HomePage.xhtml">Start</a> |
-            <a href="ProfilePage.xhtml">Mein Profil</a> |
-            <a href="LogoutPage.xhtml">Logout</a> 
+            <a href="ProfilePage.xhtml">Mein Profil</a> | &nbsp;
+            <h:form>
+           	 <h:commandButton id="logout" action="#{userBean.logout}" value="Logout"/>
+            </h:form>
         </nav>
     </ui:insert>
   </div>
