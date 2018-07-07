@@ -22,7 +22,7 @@
 	<!-- make every message clickable with href to individual MessagePage-->
 
 	<h:form>
-		<h:dataTable var="message" value="#{messageBean.messages}">
+		<h:dataTable var="message" value="#{messageBean.messages}" class="table table-striped">
 			<h:column>
 				<f:facet name="header">Nachricht</f:facet>
 				<h:outputText value="#{message.message}" />

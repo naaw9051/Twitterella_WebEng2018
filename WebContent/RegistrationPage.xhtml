@@ -19,7 +19,7 @@
   	 <h2>Registrierung</h2>
 
 <h:form>
-	<h:panelGrid id="grid" rows="3">
+	<h:panelGrid id="grid" column="2">
 		<h:outputLabel value="Name:" for="name"/>
 		<h:inputText id="name" value="#{userBean.user.name}" validator="#{userBean.validateName}"/>
 		<h:message for="name"></h:message>
