@@ -4,7 +4,14 @@
     <title>Twitterella Post</title>
 </h:head>
 <h:body>
-    <h2>Post Details</h2>
+
+	<ui:composition template="template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  <ui:define name="content">
+  
+  <h2>Post Details</h2>
     <div id="messageSection">
 
         <h:form>
@@ -18,6 +25,10 @@
             </h:panelGrid>
         </h:form>
     </div>
+    
+  </ui:define>
+</ui:composition>
+    
 </h:body>
 
 </html>

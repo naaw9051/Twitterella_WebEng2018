@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+  <title>Twitterella</title>
+</head>
+<h:body>
+  <div id="header">
+    <ui:insert name="header">
+      <h1>Twitterella</h1>
+    </ui:insert>
+  </div>
+    <div id="navigation">
+    <ui:insert name="navigation">
+        <a href="login.xhtml"><button id="loginButton">Login</button></a>
+        <nav>
+            <a href="HomePage.xhtml">Start</a> |
+            <a href="ProfilePage.xhtml">Mein Profil</a> | &nbsp;
+            <h:form>
+           	 <h:commandButton id="logout" action="#{userBean.logout}" value="Logout"/>
+            </h:form>
+        </nav>
+    </ui:insert>
+  </div>
+  <div id="content">
+    <ui:insert name="content"/>
+  </div>
+  <div id="footer">
+    <ui:insert name="footer">
+      <footer>
+			<p>Footer Information </p>
+		</footer>
+    </ui:insert>
+  </div>
+</h:body>
+</html>
