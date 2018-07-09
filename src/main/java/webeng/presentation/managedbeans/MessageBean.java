@@ -60,10 +60,11 @@ public class MessageBean implements Serializable{
 	}
 	
 	public void editMessage(String messageText) {
+		//TODO only returns a message object with null values
+		System.out.println(this.getMessage().getID());
+
 		Message newMessage = new Message();
 		newMessage.setMessage(messageText);
-		
-		System.out.println(getMessage().getID());
-		messageManager.updateMessage(newMessage, getMessage().getID());
+		messageManager.updateMessage(newMessage, this.getMessage().getID());
 	}
 }
