@@ -20,7 +20,7 @@ public class MessageBean implements Serializable{
 		this.messages = this.messageManager.getAllMessages();
 	}
 	
-	void setMessageManager(MessageManager messageManager) {
+	public void setMessageManager(MessageManager messageManager) {
 		this.messageManager = messageManager;
 	}
 	
@@ -28,7 +28,7 @@ public class MessageBean implements Serializable{
 		return this.messageManager;
 	}
 	
-	void setMessage(Message message){
+	public void setMessage(Message message){
 		this.message = message;
 	}
 	
@@ -36,7 +36,7 @@ public class MessageBean implements Serializable{
 		return this.message;
 	}
 	
-	void setMessages(List<Message> messages){
+	public void setMessages(List<Message> messages){
 		this.messages = messages;
 	}
 	
@@ -54,4 +54,16 @@ public class MessageBean implements Serializable{
 		return "MessagePage.xhtml";
 	}
 
+	public String reset() {
+		this.message = new Message();
+		return "";
+	}
+	
+	public void editMessage(String messageText) {
+		Message newMessage = new Message();
+		newMessage.setMessage(messageText);
+		
+		System.out.println(getMessage().getID());
+		messageManager.updateMessage(newMessage, getMessage().getID());
+	}
 }

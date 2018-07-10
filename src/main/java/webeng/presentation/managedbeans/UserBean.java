@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.validator.ValidatorException;
 
 import javax.faces.bean.SessionScoped;
@@ -20,13 +20,31 @@ public class UserBean implements Serializable {
 	
 	User user = new User();
 	UserManager userManager = new UserManager();
+	List<User> users = null;
+	String searchText = null;
 	
-	void setUser(User user){
+	public void setUser(User user){
 		this.user = user;
 	}
 	
 	public User getUser(){
-		return user;
+		return this.user;
+	}
+	
+	public void setUsers(List<User> users){
+		this.users = users;
+	}
+	
+	public List<User> getUsers(){
+		return this.users;
+	}
+	
+	public void setSearchText(String searchText){
+		this.searchText = searchText;
+	}
+	
+	public String getSearchText(){
+		return this.searchText;
 	}
 	
 	public String save(){
@@ -96,5 +114,13 @@ public class UserBean implements Serializable {
 		}
 	}
 	
+	public String openProfile(String userName) {
+		User user = this.userManager.getUser(userName);
+		setUser(user);
+		return "ProfilePage.xhtml";
+	}
 
+	public void searchListener(AjaxBehaviorEvent e) {
+		setUsers(this.userManager.findAllUsers(getSearchText()));
+	}
 }

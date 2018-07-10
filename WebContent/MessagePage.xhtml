@@ -4,7 +4,14 @@
     <title>Twitterella Post</title>
 </h:head>
 <h:body>
-    <h2>Post Details</h2>
+
+	<ui:composition template="template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+  <ui:define name="content">
+  
+  <h2>Post Details</h2>
     <div id="messageSection">
 
         <h:form>
@@ -13,11 +20,22 @@
                 <h:outputText id="messageText" value="#{messageBean.message.message}" />
                 <h:outputLabel value="Likes" for="likes" />
                 <h:outputText id="likes" value="#{messageBean.message.likes}" />
-                <h:commandButton value="Bearbeiten" action="#{messagebean.messageManager.updateMessage(someMessage)}"></h:commandButton>
-                <h:commandButton value="Löschen" action="#{messagebean.messageManager.deleteMessage(messagebean.message.id)}"></h:commandButton>
+                <h:commandButton value="Bearbeiten">
+                <f:ajax event="click" render="editMessage" /></h:commandButton>
+                <h:commandButton value="Löschen" action="#{messageBean.messageManager.deleteMessage(messageBean.message)}"></h:commandButton>
             </h:panelGrid>
+            
+            <h:panelGrid id="editMessage" columns="2">
+			<h:inputTextarea row = "10" col = "10" value="#{messageBean.message.message}"/>
+			<h:commandButton id="postMessage" value="Posten" action="#{messageBean.editMessage(messageBean.message.message)}" />
+			<h:commandButton id="cancelMessage" value="Abbrechen" />
+		</h:panelGrid>
         </h:form>
     </div>
+    
+  </ui:define>
+</ui:composition>
+    
 </h:body>
 
 </html>

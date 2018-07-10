@@ -11,32 +11,63 @@
 
 <h:body>
 
-	<h2>Die beliebtesten Posts</h2>
+	<ui:composition template="template.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://xmlns.jcp.org/jsf/html"
+		xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+		<ui:define name="content">
 
-	<!-- make every message clickable with href to individual MessagePage-->
+			<h2>Die beliebtesten Posts</h2>
 
-	<h:form>
-		<h:dataTable var="message" value="#{messageBean.messages}">
-			<h:column>
-				<f:facet name="header">Nachricht</f:facet>
-				<h:outputText value="#{message.message}" />
-			</h:column>
+			<!-- make every message clickable with href to individual MessagePage-->
 
-			<h:column>
-				<f:facet name="header">Likes</f:facet>
-				<h:outputText value="#{message.likes}" />
-			</h:column>
+			<h:form>
 
-			<h:column>
-				<f:facet name="header">Verfasser</f:facet>
-				<h:outputText value="#{message.userName}" />
-			</h:column>
+				<h:panelGrid id="grid" columns="2">
+					<h:outputLabel value="Nutzersuche:" for="searchText" />
+					<h:inputText id="searchText" value="#{userBean.searchText}">
+						<f:ajax event="keyup" render="userSearch"
+							listener="#{userBean.searchListener}" />
+					</h:inputText>
+				</h:panelGrid>
 
-			<h:column>
-				<h:commandButton id="detailPage" action="#{messageBean.openDetails(message)}" value="Details..." />
-			</h:column>
-		</h:dataTable>
-	</h:form>
+				<h:dataTable id="userSearch" var="user" value="#{userBean.users}">
+					<h:column>
+						<h:commandLink value="#{user.name}"
+							action="#{userBean.openProfile(user.name)}" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+
+
+			<h:form>
+				<h:dataTable var="message" value="#{messageBean.messages}">
+					<h:column>
+						<f:facet name="header">Nachricht</f:facet>
+						<h:outputText value="#{message.message}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Likes</f:facet>
+						<h:outputText value="#{message.likes}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Verfasser</f:facet>
+						<h:commandLink value="#{message.userName}" action="#{userBean.openProfile(message.userName)}" />
+					</h:column>
+
+					<h:column>
+						<h:commandButton id="detailPage" action="#{messageBean.openDetails(message)}" value="Details..." />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+
+
+		</ui:define>
+	</ui:composition>
+
+
 </h:body>
 
 </html>

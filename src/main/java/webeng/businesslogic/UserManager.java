@@ -11,6 +11,10 @@ public class UserManager {
 	public List<User> getAllUsers() {
 		return DAOFactory.getUserDAO().getAllUsers();
 	}
+	
+	public List<User> findAllUsers(String userName) {
+		return DAOFactory.getUserDAO().findAllUsers(userName);
+	}
 
 	public void addUser(User user) {
 		DAOFactory.getUserDAO().addUser(user);
