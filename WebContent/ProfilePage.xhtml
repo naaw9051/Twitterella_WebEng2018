@@ -15,7 +15,12 @@
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
   <ui:define name="content">
-    	  <h2>Mein Profil</h2>
+ 		 <h2>
+        <h:outputText rendered="#{userBean.loggedIn}" value="Meine Seite"/>
+        </h2>
+    	  <h2>
+        <h:outputText value="#{userBean.user.name}'s Profil"/>
+        </h2>
 
 	<h:form id="profilePicture">      
          <h:graphicImage value = "/images/jsf-mini-logo.png"/>
@@ -25,7 +30,9 @@
         <h:outputText value="#{userBean.user.name}"/>
     </div>
    
-   <h3>Meine Posts</h3>
+   <h3>
+   <h:outputText value="#{userBean.user.name}'s Posts"/>
+   </h3>
     <h:form>
          <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessage">
              <h:column>    				
@@ -38,7 +45,7 @@
                <h:outputText value= "#{profileMessage.likes}"/>
             </h:column>
             
-            <h:column>
+            <h:column rendered="#{userBean.loggedIn}">
 				<h:commandButton id="detailPage" action="#{messageBean.openDetails(profileMessage)}" value="Details..." />
 			</h:column>
             
