@@ -27,33 +27,20 @@
    
    <h3>Meine Posts</h3>
     <h:form>
-         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessages">
+         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessage">
              <h:column>    				
                <f:facet name = "header">Nachricht</f:facet>    				
-               <h:outputText value= "#{profileMessages.message}"/>
+               <h:outputText value= "#{profileMessage.message}"/>
             </h:column>
             
             <h:column>
                <f:facet name = "header">Likes</f:facet>
-               <h:outputText value= "#{profileMessages.likes}"/>
+               <h:outputText value= "#{profileMessage.likes}"/>
             </h:column>
             
-             <!--  
-             <h:column>
-               <f:facet name = "details">Details</f:facet>
-               <h:outputText value= "#{profileMessages.id}"/>
-               <h:commandLink value="action">
- 				<f:param name="id" value="#{profileMessages.id}" />
-				</h:commandLink>
-            </h:column>
-            -->
-            
-            <!--  
             <h:column>
-               <f:facet name = "header">Verfasser</f:facet>
-               <h:outputText value= "#{profileMessages.userName}"/>
-            </h:column>
-            -->
+				<h:commandButton id="detailPage" action="#{messageBean.openDetails(profileMessage)}" value="Details..." />
+			</h:column>
             
          </h:dataTable>
       </h:form>

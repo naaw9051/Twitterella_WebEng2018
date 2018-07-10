@@ -22,6 +22,7 @@ public class UserBean implements Serializable {
 	UserManager userManager = new UserManager();
 	List<User> users = null;
 	String searchText = null;
+	boolean loggedIn;
 	
 	public void setUser(User user){
 		this.user = user;
@@ -47,14 +48,21 @@ public class UserBean implements Serializable {
 		return this.searchText;
 	}
 	
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+	
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
+		
 	public String save(){
 		userManager.addUser(user);
 		return "";
 	}
 	
 	public String login(){
-		
-		System.out.println("////////////////////////////////////////Login");
 		//Eingegebenes Passwort speichern
 		String typedpassword = this.user.getPassword();
 		
@@ -62,9 +70,11 @@ public class UserBean implements Serializable {
 		
 		if(userToBeValidated.validate() && userToBeValidated.validatePassword(typedpassword))
 		{
+			setLoggedIn(true);
 			//eigene Profilseite wird bei erfolgreichem Login zurückgegeben
 			return "success";
 		} else{
+			setLoggedIn(false);
 			//Fehler: Authentifizierung fehlgeschlagen
 			this.user= null; //?? Sonst wird Passwort und Name gespeichert
 			return "failed";
@@ -72,6 +82,7 @@ public class UserBean implements Serializable {
 	}
 	
 	public String logout() {
+		setLoggedIn(false);
 		this.user = null;
 		return "LogoutPage.xhtml";
 	}
