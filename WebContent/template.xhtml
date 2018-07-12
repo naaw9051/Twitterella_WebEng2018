@@ -15,12 +15,14 @@
   </div>
     <div id="navigation">
     <ui:insert name="navigation">
-        <a href="login.xhtml"><button id="loginButton">Login</button></a>
         <nav>
+        	<h:form>
+           	 <h:commandButton rendered="#{not userBean.loggedIn}" id="loginButton" action="login.xhtml" value="Login"/>
+            </h:form>
             <a href="HomePage.xhtml">Start</a> |
             <a href="ProfilePage.xhtml">Mein Profil</a> | &nbsp;
             <h:form>
-           	 <h:commandButton id="logout" action="#{userBean.logout}" value="Logout"/>
+           	 <h:commandButton rendered="#{userBean.loggedIn}" id="logout" action="#{userBean.logout}" value="Logout"/>
             </h:form>
         </nav>
     </ui:insert>
