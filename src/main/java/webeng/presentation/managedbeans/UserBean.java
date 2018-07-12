@@ -9,7 +9,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.validator.ValidatorException;
-
+import javax.servlet.http.HttpSession;
 import javax.faces.bean.SessionScoped;
 import webeng.businesslogic.UserManager;
 import webeng.tranferobjects.User;
@@ -23,6 +23,9 @@ public class UserBean implements Serializable {
 	List<User> users = null;
 	String searchText = null;
 	boolean loggedIn;
+	boolean loggedInUser;
+	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);  
+	
 	
 	public void setUser(User user){
 		this.user = user;
@@ -55,7 +58,28 @@ public class UserBean implements Serializable {
 	public void setLoggedIn(boolean loggedIn) {
 		this.loggedIn = loggedIn;
 	}
+	
+	public boolean isLoggedInUser() {
+		User loginUser = (User) session.getAttribute("loginUser");
+		boolean logged = false;
+		
+		if(loginUser != null && this.user.getName().equals(loginUser.getName())){
+			logged = true;
+			System.out.println("this is your page, " + loginUser.getName());
+		}
+		else {
+			logged = false;
+			if(loginUser != null && this.user != null)
+				System.out.println("you clicked on " + this.user.getName() + " and this user is logged in: "+loginUser.getName());
+			else
+				System.out.println("null");
+		}
+		return logged;
+	}
 
+	public void setLoggedInUser(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
 		
 	public String save(){
 		userManager.addUser(user);
@@ -71,12 +95,13 @@ public class UserBean implements Serializable {
 		if(userToBeValidated.validate() && userToBeValidated.validatePassword(typedpassword))
 		{
 			setLoggedIn(true);
+			session.setAttribute("loginUser", this.user); 
 			//eigene Profilseite wird bei erfolgreichem Login zurückgegeben
 			return "success";
 		} else{
 			setLoggedIn(false);
 			//Fehler: Authentifizierung fehlgeschlagen
-			this.user= null; //?? Sonst wird Passwort und Name gespeichert
+			this.user = null; //?? Sonst wird Passwort und Name gespeichert
 			return "failed";
 		}	
 	}
@@ -84,6 +109,7 @@ public class UserBean implements Serializable {
 	public String logout() {
 		setLoggedIn(false);
 		this.user = null;
+		session.setAttribute("loginUser", this.user); 
 		return "LogoutPage.xhtml";
 	}
 	

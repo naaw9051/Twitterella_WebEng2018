@@ -57,7 +57,7 @@
 						<h:commandLink value="#{message.userName}" action="#{userBean.openProfile(message.userName)}" />
 					</h:column>
 
-					<h:column>
+					<h:column rendered="#{userBean.loggedIn}">
 						<h:commandButton id="detailPage" action="#{messageBean.openDetails(message)}" value="Details..." />
 					</h:column>
 				</h:dataTable>
