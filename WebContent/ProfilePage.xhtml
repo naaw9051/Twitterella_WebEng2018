@@ -17,13 +17,7 @@
   <ui:define name="content">
     	  <h2>Mein Profil</h2>
 
-	<h:form id="profilePicture">      
-         <h:graphicImage value = "/images/jsf-mini-logo.png"/>
-    </h:form>
-
-    <div id="userName">
-        <h:outputText value="#{userBean.user.name}"/>
-    </div>
+		<p><button class="profilepicture page"><h:outputText value="#{userBean.user.name}"/></button></p>
    
    <h3>Meine Posts</h3>
     <h:form>

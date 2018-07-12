@@ -23,6 +23,12 @@
 
 	<h:form>
 		<h:dataTable var="message" value="#{messageBean.messages}" class="table table-striped">
+		
+			<h:column>
+				<f:facet name="header">Verfasser</f:facet>
+				<h:commandButton class="profilepicture" value="#{message.userName}" />
+			</h:column>
+		
 			<h:column>
 				<f:facet name="header">Nachricht</f:facet>
 				<h:outputText value="#{message.message}" />
@@ -33,13 +39,10 @@
 				<h:outputText value="#{message.likes}" />
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Verfasser</f:facet>
-				<h:outputText value="#{message.userName}" />
-			</h:column>
+
 
 			<h:column>
-				<h:commandButton id="detailPage" action="#{messageBean.openDetails(message)}" value="Details..." />
+				<h:commandButton class="btn" id="detailPage" action="#{messageBean.openDetails(message)}" value="Details..." />
 			</h:column>
 		</h:dataTable>
 	</h:form>

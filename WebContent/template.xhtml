@@ -26,9 +26,9 @@
 			  <li class="nav-item">
 			    <a class="nav-link" href="ProfilePage.xhtml">Mein Profil</a>
 			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link active" href="login.xhtml">Login</a>
-			  </li>
+			  	<h:form>
+	           	 <h:commandButton class="btn" id="login" action="login.xhtml" value="Login"/>
+	            </h:form>
 			  <li>
 			  	<h:form>
 	           	 <h:commandButton class="btn" id="logout" action="#{userBean.logout}" value="Logout"/>
@@ -45,7 +45,7 @@
   </div>
   
   
-  <div id="content">
+  <div id="content" class="container-fluid">
     <ui:insert name="content"/>
   </div>
   
@@ -53,9 +53,10 @@
   <div id="footer" class="container-fluid">
     <ui:insert name="footer">
       <footer>
-			<p>Footer Information </p>
+			<h4>POWERED BY NATHALIE UND MY-QUYEN</h4>
 		</footer>
     </ui:insert>
   </div>
+  
 </h:body>
 </html>

@@ -14,14 +14,14 @@
   <h2>Post Details</h2>
     <div id="messageSection">
 
-        <h:form>
+        <h:form class="form-inline justify-content-center">
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nachricht" for="messageText" />
                 <h:outputText id="messageText" value="#{messageBean.message.message}" />
                 <h:outputLabel value="Likes" for="likes" />
                 <h:outputText id="likes" value="#{messageBean.message.likes}" />
-                <h:commandButton value="Bearbeiten" action="#{messagebean.messageManager.updateMessage(someMessage)}"></h:commandButton>
-                <h:commandButton value="Löschen" action="#{messagebean.messageManager.deleteMessage(messagebean.message.id)}"></h:commandButton>
+                <h:commandButton class="btn" value="Bearbeiten" action="#{messagebean.messageManager.updateMessage(someMessage)}"></h:commandButton>
+                <h:commandButton class="btn" value="Löschen" action="#{messagebean.messageManager.deleteMessage(messagebean.message.id)}"></h:commandButton>
             </h:panelGrid>
         </h:form>
     </div>
