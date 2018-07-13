@@ -27,11 +27,11 @@
 			    <a class="nav-link" href="ProfilePage.xhtml">Mein Profil</a>
 			  </li>
 			  	<h:form>
-	           	 <h:commandButton class="btn" id="login" action="login.xhtml" value="Login"/>
+	           	 <h:commandButton rendered="#{not userBean.loggedIn}"  class="btn" id="login" action="login.xhtml" value="Login"/>
 	            </h:form>
 			  <li>
 			  	<h:form>
-	           	 <h:commandButton class="btn" id="logout" action="#{userBean.logout}" value="Logout"/>
+	           	 <h:commandButton rendered="#{userBean.loggedIn}" class="btn" id="logout" action="#{userBean.logout}" value="Logout"/>
 	            </h:form>
 			  </li>
 			</ul>
@@ -41,20 +41,6 @@
    <div id="header" class="container-fluid">
     <ui:insert name="header">
       <h1>Twitterella</h1>
-    </ui:insert>
-  </div>
-    <div id="navigation">
-    <ui:insert name="navigation">
-        <nav>
-        	<h:form>
-           	 <h:commandButton rendered="#{not userBean.loggedIn}" id="loginButton" action="login.xhtml" value="Login"/>
-            </h:form>
-            <a href="HomePage.xhtml">Start</a> |
-            <a href="ProfilePage.xhtml">Mein Profil</a> | &nbsp;
-            <h:form>
-           	 <h:commandButton rendered="#{userBean.loggedIn}" id="logout" action="#{userBean.logout}" value="Logout"/>
-            </h:form>
-        </nav>
     </ui:insert>
   </div>
   

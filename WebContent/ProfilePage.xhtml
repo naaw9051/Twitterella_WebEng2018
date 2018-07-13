@@ -28,7 +28,7 @@
    <h:outputText value="#{userBean.user.name}'s Posts"/>
    </h3>
     <h:form>
-         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessages" class="table table-striped">
+         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessage" class="table table-striped">
              <h:column>    				
                <f:facet name = "header">Nachricht</f:facet>    				
                <h:outputText value= "#{profileMessage.message}"/>
