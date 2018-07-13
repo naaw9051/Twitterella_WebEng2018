@@ -24,7 +24,9 @@
 			    <a class="nav-link" href="HomePage.xhtml">Startseite</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" href="ProfilePage.xhtml">Mein Profil</a>
+			  <h:form>
+			    <h:commandLink class="nav-link" value="Mein Profil" action="#{userBean.openOwnProfile}" />
+			  </h:form>
 			  </li>
 			  	<h:form>
 	           	 <h:commandButton rendered="#{not userBean.loggedIn}"  class="btn" id="login" action="login.xhtml" value="Login"/>

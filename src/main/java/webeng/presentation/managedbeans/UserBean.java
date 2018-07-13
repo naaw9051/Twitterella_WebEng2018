@@ -19,13 +19,12 @@ import webeng.tranferobjects.User;
 public class UserBean implements Serializable {
 	
 	User user = new User();
+	User loginUser = new User();
 	UserManager userManager = new UserManager();
 	List<User> users = null;
 	String searchText = null;
 	boolean loggedIn;
 	boolean loggedInUser;
-	HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);  
-	
 	
 	public void setUser(User user){
 		this.user = user;
@@ -60,7 +59,6 @@ public class UserBean implements Serializable {
 	}
 	
 	public boolean isLoggedInUser() {
-		User loginUser = (User) session.getAttribute("loginUser");
 		boolean logged = false;
 		
 		if(loginUser != null && this.user.getName().equals(loginUser.getName())){
@@ -95,7 +93,7 @@ public class UserBean implements Serializable {
 		if(userToBeValidated.validate() && userToBeValidated.validatePassword(typedpassword))
 		{
 			setLoggedIn(true);
-			session.setAttribute("loginUser", this.user); 
+			this.loginUser = this.user;
 			//eigene Profilseite wird bei erfolgreichem Login zurückgegeben
 			return "success";
 		} else{
@@ -109,7 +107,7 @@ public class UserBean implements Serializable {
 	public String logout() {
 		setLoggedIn(false);
 		this.user = null;
-		session.setAttribute("loginUser", this.user); 
+		this.loginUser = this.user;
 		return "LogoutPage.xhtml";
 	}
 	
@@ -155,6 +153,16 @@ public class UserBean implements Serializable {
 		User user = this.userManager.getUser(userName);
 		setUser(user);
 		return "ProfilePage.xhtml";
+	}
+	
+	public String openOwnProfile() {
+		if(loggedIn) {
+			setUser(loginUser);
+			return "ProfilePage.xhtml";
+		}
+		else {
+			return "login.xhtml";
+		}
 	}
 
 	public void searchListener(AjaxBehaviorEvent e) {

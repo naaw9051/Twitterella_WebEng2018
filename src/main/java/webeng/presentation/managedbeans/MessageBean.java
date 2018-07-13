@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.event.AjaxBehaviorEvent;
 
 import webeng.tranferobjects.Message;
 import webeng.businesslogic.MessageManager;
@@ -14,6 +15,7 @@ public class MessageBean implements Serializable{
 	Message message = new Message();
 	MessageManager messageManager;
 	public List<Message> messages = null;
+	boolean canEdit = false;
 	
 	public MessageBean(){ 
 		this.messageManager = new MessageManager();
@@ -44,6 +46,14 @@ public class MessageBean implements Serializable{
 		return this.messages;
 	}
 	
+	public boolean isCanEdit() {
+		return this.canEdit;
+	}
+	
+	public void setCanEdit(boolean canEdit) {
+		this.canEdit = canEdit;
+	}
+	
 	public String save(){
 		messageManager.addMessage(message);
 		return "";
@@ -66,5 +76,11 @@ public class MessageBean implements Serializable{
 		Message newMessage = new Message();
 		newMessage.setMessage(messageText);
 		messageManager.updateMessage(newMessage, this.getMessage().getID());
+	}
+	
+	public void editListener(AjaxBehaviorEvent e) {
+		System.out.println("Before: " + this.canEdit);
+		canEdit = !canEdit;
+		System.out.println("After: " + this.canEdit);
 	}
 }
