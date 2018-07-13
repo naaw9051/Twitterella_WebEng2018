@@ -151,6 +151,17 @@ public class UserBean implements Serializable {
 		}
 	}
 	
+	public void validateMail(FacesContext ctx, UIComponent ui, Object value)
+			throws ValidatorException {
+		
+		String mail = (String) value;
+		
+		if(!(mail.contains("@"))) {
+			throw new ValidatorException(new FacesMessage("E-Mail ungültig.",
+					"E-Mail ungültig."));
+		}
+	}
+	
 	public String openProfile(String userName) {
 		User user = this.userManager.getUser(userName);
 		setUser(user);

@@ -19,7 +19,7 @@
 
 			<h2>Die beliebtesten Posts</h2>
 
-			<h:form>
+			<h:form class="form-inline justify-content-center">
 
 				<h:panelGrid id="grid" columns="2">
 					<h:outputLabel value="Nutzersuche:" for="searchText" />
@@ -28,15 +28,15 @@
 							listener="#{userBean.searchListener}" />
 					</h:inputText>
 				</h:panelGrid>
-
-				<h:dataTable id="userSearch" var="user" value="#{userBean.users}">
+				
+				<h:dataTable id="userSearch" var="user" value="#{userBean.users}" >
 					<h:column>
 						<h:commandLink value="#{user.name}"
 							action="#{userBean.openProfile(user.name)}" />
 					</h:column>
 				</h:dataTable>
 			</h:form>
-
+			
 
 			<h:form>
 				<h:dataTable var="message" value="#{messageBean.messages}" class="table table-striped">
