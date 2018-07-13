@@ -6,9 +6,39 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <head>
   <title>Twitterella</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></link>
+  <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="footer.css" media="screen" />
+   <link rel="stylesheet" type="text/css" href="content.css" media="screen" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
 </head>
 <h:body>
-  <div id="header">
+ 
+    <div id="navigation">
+    <ui:insert name="navigation">
+
+			  <ul class="nav justify-content-end">
+			  <li class="nav-item">
+			    <a class="nav-link" href="HomePage.xhtml">Startseite</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="ProfilePage.xhtml">Mein Profil</a>
+			  </li>
+			  	<h:form>
+	           	 <h:commandButton class="btn" id="login" action="login.xhtml" value="Login"/>
+	            </h:form>
+			  <li>
+			  	<h:form>
+	           	 <h:commandButton class="btn" id="logout" action="#{userBean.logout}" value="Logout"/>
+	            </h:form>
+			  </li>
+			</ul>
+    </ui:insert>
+  </div>
+  
+   <div id="header" class="container-fluid">
     <ui:insert name="header">
       <h1>Twitterella</h1>
     </ui:insert>
@@ -27,15 +57,20 @@
         </nav>
     </ui:insert>
   </div>
-  <div id="content">
+  
+  
+  <div id="content" class="container-fluid">
     <ui:insert name="content"/>
   </div>
-  <div id="footer">
+  
+  
+  <div id="footer" class="container-fluid">
     <ui:insert name="footer">
       <footer>
-			<p>Footer Information </p>
+			<h4>POWERED BY NATHALIE UND MY-QUYEN</h4>
 		</footer>
     </ui:insert>
   </div>
+  
 </h:body>
 </html>

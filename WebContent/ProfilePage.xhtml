@@ -22,19 +22,13 @@
         <h:outputText value="#{userBean.user.name}'s Profil"/>
         </h2>
 
-	<h:form id="profilePicture">      
-         <h:graphicImage value = "/images/jsf-mini-logo.png"/>
-    </h:form>
-
-    <div id="userName">
-        <h:outputText value="#{userBean.user.name}"/>
-    </div>
+		<p><button class="profilepicture page"><h:outputText value="#{userBean.user.name}"/></button></p>
    
    <h3>
    <h:outputText value="#{userBean.user.name}'s Posts"/>
    </h3>
     <h:form>
-         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessage">
+         <h:dataTable value="#{messageBean.messageManager.findAllMessages(userBean.user.name)}" var="profileMessages" class="table table-striped">
              <h:column>    				
                <f:facet name = "header">Nachricht</f:facet>    				
                <h:outputText value= "#{profileMessage.message}"/>

@@ -18,21 +18,25 @@
   
   	 <h2>Registrierung</h2>
 
-<h:form>
-	<h:panelGrid id="grid" rows="3">
+<h:form class="form-inline justify-content-center">
+
+	<h:panelGrid id="grid" column="2">
+	
 		<h:outputLabel value="Name:" for="name"/>
 		<h:inputText id="name" value="#{userBean.user.name}" validator="#{userBean.validateName}"/>
 		<h:message for="name"></h:message>
+		
 		<h:outputLabel value="Password:" for="password" />
 		<h:inputText type="password" id="password" value="#{userBean.user.password}"/>
+		
 		<h:outputLabel value="Email:" for="email"/>
 		<h:inputText id="email" value="#{userBean.user.email}" required="true" label="email">
 			<f:validator validatorId="emailValidator"/>
 		</h:inputText>
 		<h:message for="email"></h:message>
-		<h:commandButton id="register" action="#{userBean.register}" value="Registrieren"/>
-		<h:commandButton id="reset" action="#{userBean.reset}" value="Reset" immediate="true"/>
-		
+	
+		<h:commandButton id="register" class="btn" action="#{userBean.register}" value="Registrieren"/>
+		<h:commandButton id="reset" class="btn" action="#{userBean.reset}" value="Reset" immediate="true"/>
 	</h:panelGrid>
 </h:form>
     

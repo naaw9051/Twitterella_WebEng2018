@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "Amatic";
+    src: url(fonts/AMATICS-REGULAR.TTF) format("truetype");
+}
+
+body {
+	background-color:  #1dcaff;
+}
+
+#header{
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 50px;
+	background-color: #1dcaff;
+	color: white;
+	font-family:"Amatic";
+	
+}
+
+#header h1{
+	font-size: 100px;
+}
+
+#navigation {
+	padding-top: 5px;
+	padding-right: 10px;
+	background-color: #1dcaff ;
+	color: white;
+}
+
+#navigation a{
+	color: white;
+}
+
+#navigation a:hover{
+	color:  #0084b4;
+}
+
+#navigation .btn {
+	color: white;
+	border: solid;
+	border-color: white;
+	border-width: 0.5px;
+	background: none;
+}
+
+#navigation .btn:hover {
+	color:  #0084b4;
+	border-color:  #0084b4;
+}
