@@ -23,14 +23,18 @@
                 <h:outputLabel value="id" for="id" />
                 <h:outputText id="id" value="#{messageBean.message.ID}" />
                 <h:commandButton class="btn" rendered="#{userBean.loggedInUser}" value="Bearbeiten">
-                <f:ajax event="keyup" render="editMessage" /></h:commandButton>
+                	<f:ajax event="click" render="editMessage" listener="#{messageBean.editListener}"/>
+                </h:commandButton>
                 <h:commandButton class="btn" rendered="#{userBean.loggedInUser}" value="Löschen" action="#{messageBean.messageManager.deleteMessage(messageBean.message)}"></h:commandButton>
             </h:panelGrid>
             
+            
             <h:panelGrid id="editMessage" columns="2">
-			<h:inputTextarea row = "10" col = "10" name="newMessageText"/>
-			<h:commandButton id="postMessage" value="Posten" action="#{messageBean.editMessage(newMesageText)}" />
-			<h:commandButton id="cancelMessage" value="Abbrechen" />
+			<h:inputTextarea row = "10" col = "10"  rendered="#{messageBean.canEdit}" value="#{messageBean.message.message}"/>
+			<h:commandButton id="postMessage"  rendered="#{messageBean.canEdit}" value="Posten" action="#{messageBean.editMessage(messageBean.message.message)}" />
+			<h:commandButton id="cancelMessage"  rendered="#{messageBean.canEdit}" value="Abbrechen">
+				<f:ajax event="click" render="editMessage" listener="#{messageBean.editListener}"/>
+				 </h:commandButton>
 		</h:panelGrid>
         </h:form>
     </div>
