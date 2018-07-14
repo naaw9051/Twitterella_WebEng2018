@@ -64,18 +64,27 @@ public class MessageBean implements Serializable{
 		return "MessagePage.xhtml";
 	}
 
+	public String delete() {
+		//TODO
+		System.out.println("delete()/////////////////////////////////////////////");
+		messageManager.deleteMessage(message);
+		return "";
+	}
+	
 	public String reset() {
 		this.message = new Message();
 		return "";
 	}
 	
-	public void editMessage(String messageText) {
-		//TODO only returns a message object with null values
-		System.out.println(this.getMessage().getID());
-
-		Message newMessage = new Message();
-		newMessage.setMessage(messageText);
-		messageManager.updateMessage(newMessage, this.getMessage().getID());
+	public String editMessage(){
+		//TODO
+		System.out.println("editMessage()/////////////////////////////////////////////");
+		System.out.println(message.getID());
+		System.out.println(message.getMessage());
+		System.out.println(message.getLikes());
+		System.out.println(message.getUserName());
+		messageManager.updateMessage(message);
+		return "";
 	}
 	
 	public void editListener(AjaxBehaviorEvent e) {

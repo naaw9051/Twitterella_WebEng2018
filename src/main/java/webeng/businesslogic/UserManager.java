@@ -24,8 +24,8 @@ public class UserManager {
 		return DAOFactory.getUserDAO().getUser(name);
 	}
 
-	public void updateUser(User user, String name) {
-		DAOFactory.getUserDAO().updateUser(user, name);
+	public void updateUser(User user) {
+		DAOFactory.getUserDAO().updateUser(user);
 	}
 
 	public boolean containsUser(String name) {

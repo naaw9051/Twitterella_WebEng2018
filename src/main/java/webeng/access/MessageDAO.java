@@ -8,6 +8,6 @@ public interface MessageDAO {
 	public List<Message> findAllMessages(String userName);
 	public void addMessage(Message m);
 	public Message getMessage(int id);
-	public void updateMessage(Message m, int id);
+	public void updateMessage(Message m);
 	public void deleteMessage(Message m);
 }

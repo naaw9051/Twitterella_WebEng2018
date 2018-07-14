@@ -77,13 +77,13 @@ public class MySQLUserDAO implements UserDAO {
 	}
 
 	@Override
-	public void updateUser(User newUser, String oldUserName) {
+	public void updateUser(User newUser) {
 		// Hier Methode für das Aktualisieren in der Datenbank
 		String query = "UPDATE USERS SET password=? WHERE name=?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, newUser.getPassword());
-			stmt.setString(2, oldUserName);
+			stmt.setString(2, newUser.getName());
 
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {

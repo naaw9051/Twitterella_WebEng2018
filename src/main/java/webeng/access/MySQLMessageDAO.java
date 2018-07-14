@@ -109,13 +109,13 @@ public class MySQLMessageDAO implements MessageDAO {
 	}
 
 	@Override
-	public void updateMessage(Message newMessage, int messageID) {
+	public void updateMessage(Message newMessage) {
 		// Hier Methode für das Aktualisieren in der Datenbank
 		String query = "UPDATE MESSAGES SET message=? WHERE id=?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, newMessage.getMessage());
-			stmt.setInt(2, messageID);
+			stmt.setInt(2, newMessage.getID());
 
 			int numberRows = stmt.executeUpdate();
 		} catch (SQLException e) {

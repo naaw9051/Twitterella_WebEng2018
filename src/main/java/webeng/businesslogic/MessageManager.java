@@ -23,8 +23,8 @@ public class MessageManager {
 		return DAOFactory.getMessageDAO().getMessage(id);
 	}
 
-	public void updateMessage(Message message, int id) {
-		DAOFactory.getMessageDAO().updateMessage(message, id);
+	public void updateMessage(Message message) {
+		DAOFactory.getMessageDAO().updateMessage(message);
 	}
 
 	public boolean containsMessage(int id) {
