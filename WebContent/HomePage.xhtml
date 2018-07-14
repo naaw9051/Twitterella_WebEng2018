@@ -62,6 +62,7 @@
 					<h:column>
 						<f:facet name="header">Likes</f:facet>
 						<h:outputText value="#{message.likes}" />
+						<h:commandButton class="btn" action="#{messageBean.likePost(message)}" value="Like" rendered="#{userBean.loggedIn and not messageBean.isOwnPost(message)}"/>
 					</h:column>
 
 					<h:column rendered="#{userBean.loggedIn}">

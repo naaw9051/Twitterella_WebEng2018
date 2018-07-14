@@ -54,6 +54,10 @@ public class MessageBean implements Serializable{
 		this.canEdit = canEdit;
 	}
 	
+	public boolean isOwnPost(Message message) {
+		return (UserBean.loginUser != null && message.getUserName().equals(UserBean.loginUser.getName()));
+	}
+	
 	public String save(){
 		message.setID(messageManager.getLargestID() + 1);
 		message.setUserName(UserBean.loginUser.getName());
@@ -65,6 +69,12 @@ public class MessageBean implements Serializable{
 	public String openDetails(Message message) {
 		setMessage(message);
 		return "MessagePage.xhtml";
+	}
+	
+	public String likePost(Message message) {
+		setMessage(message);
+		message.setLikes(message.getLikes() +1);
+		return editMessage();
 	}
 
 	public String delete() {
