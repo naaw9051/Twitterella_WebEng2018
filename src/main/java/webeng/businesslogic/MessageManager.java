@@ -43,4 +43,8 @@ public class MessageManager {
 		DAOFactory.getMessageDAO().deleteMessage(message);
 	}
 
+	public int getLargestID() {
+		return DAOFactory.getMessageDAO().getLargestID();
+	}
+
 }

@@ -9,7 +9,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.validator.ValidatorException;
-import javax.servlet.http.HttpSession;
 import javax.faces.bean.SessionScoped;
 import webeng.businesslogic.UserManager;
 import webeng.tranferobjects.User;
@@ -19,7 +18,7 @@ import webeng.tranferobjects.User;
 public class UserBean implements Serializable {
 	
 	User user = new User();
-	User loginUser = new User();
+	static User loginUser = new User();
 	UserManager userManager = new UserManager();
 	List<User> users = null;
 	String searchText = null;
@@ -63,7 +62,7 @@ public class UserBean implements Serializable {
 		
 		if(loginUser != null && this.user.getName().equals(loginUser.getName())){
 			logged = true;
-			System.out.println("this is your page, " + loginUser.getName());
+			//System.out.println("this is your page, " + loginUser.getName());
 		}
 		else {
 			logged = false;
@@ -93,7 +92,7 @@ public class UserBean implements Serializable {
 		if(userToBeValidated.validate() && userToBeValidated.validatePassword(typedpassword))
 		{
 			setLoggedIn(true);
-			this.loginUser = this.user;
+			loginUser = this.user;
 			//eigene Profilseite wird bei erfolgreichem Login zurückgegeben
 			return "success";
 		} else{
@@ -107,7 +106,7 @@ public class UserBean implements Serializable {
 	public String logout() {
 		setLoggedIn(false);
 		this.user = null;
-		this.loginUser = this.user;
+		loginUser = this.user;
 		return "LogoutPage.xhtml";
 	}
 	

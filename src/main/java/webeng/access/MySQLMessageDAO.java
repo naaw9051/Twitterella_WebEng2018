@@ -138,4 +138,23 @@ public class MySQLMessageDAO implements MessageDAO {
 		}
 	}
 
+	@Override
+	public int getLargestID() {
+		// Hier Methode für das Auslesen aus der Datenbank
+		int largestID = 0;
+		String query = "SELECT MAX(id) FROM MESSAGES";
+		try {
+			PreparedStatement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				largestID = rs.getInt(1);
+			}
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return largestID;
+	}
+
 }

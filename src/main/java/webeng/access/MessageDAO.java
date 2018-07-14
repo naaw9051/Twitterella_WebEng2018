@@ -10,4 +10,5 @@ public interface MessageDAO {
 	public Message getMessage(int id);
 	public void updateMessage(Message m);
 	public void deleteMessage(Message m);
+	public int getLargestID();
 }

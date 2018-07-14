@@ -37,6 +37,14 @@
 				</h:dataTable>
 			</h:form>
 			
+	<h:form class="form-inline justify-content-center">
+	<h:panelGrid id="grid" column="2" rendered="#{userBean.loggedIn}">
+		<h:outputLabel value="Nachricht posten:" for="post"/>
+		<h:inputTextarea row = "10" col = "10" id="post" value="#{messageBean.message.message}"/>
+		<h:commandButton id="register" class="btn" action="#{messageBean.save}" value="Posten"/>
+		<h:commandButton id="reset" class="btn" action="#{messageBean.reset}" value="Reset" immediate="true"/>
+	</h:panelGrid>
+</h:form>
 
 			<h:form>
 				<h:dataTable var="message" value="#{messageBean.messages}" class="table table-striped">

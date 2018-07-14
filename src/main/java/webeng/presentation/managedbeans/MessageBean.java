@@ -55,6 +55,9 @@ public class MessageBean implements Serializable{
 	}
 	
 	public String save(){
+		message.setID(messageManager.getLargestID() + 1);
+		message.setUserName(UserBean.loginUser.getName());
+		message.setLikes(0);
 		messageManager.addMessage(message);
 		return "";
 	}
