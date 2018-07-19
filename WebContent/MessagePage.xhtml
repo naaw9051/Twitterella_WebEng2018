@@ -20,8 +20,6 @@
                 <h:outputText id="messageText" value="#{messageBean.message.message}" />
                 <h:outputLabel value="Likes" for="likes" />
                 <h:outputText id="likes" value="#{messageBean.message.likes}" />
-                <h:outputLabel value="id" for="id" />
-                <h:outputText id="id" value="#{messageBean.message.ID}" />
                 <h:commandButton class="btn" rendered="#{userBean.loggedInUser}" value="Bearbeiten">
                 	<f:ajax event="click" render="editMessage" listener="#{messageBean.editListener}"/>
                 </h:commandButton>

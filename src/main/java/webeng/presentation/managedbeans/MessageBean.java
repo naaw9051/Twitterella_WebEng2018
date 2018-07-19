@@ -63,7 +63,9 @@ public class MessageBean implements Serializable{
 		message.setUserName(UserBean.loginUser.getName());
 		message.setLikes(0);
 		messageManager.addMessage(message);
-		return "";
+		setMessages(this.messageManager.getAllMessages());
+		
+		return "HomePage.xhtml";
 	}
 	
 	public String openDetails(Message message) {
