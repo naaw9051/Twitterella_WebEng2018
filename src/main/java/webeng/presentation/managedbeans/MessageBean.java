@@ -4,22 +4,26 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import webeng.tranferobjects.Message;
 import webeng.businesslogic.MessageManager;
 
 @ManagedBean(name = "messageBean")
+@SessionScoped
 public class MessageBean implements Serializable{
 
-	Message message = new Message();
+	Message message;
 	MessageManager messageManager;
-	public List<Message> messages = null;
-	boolean canEdit = false;
+	public List<Message> messages;
+	boolean canEdit;
 	
 	public MessageBean(){ 
+		this.message = new Message();
 		this.messageManager = new MessageManager();
 		this.messages = this.messageManager.getAllMessages();
+		this.canEdit = false;
 	}
 	
 	public void setMessageManager(MessageManager messageManager) {
@@ -80,10 +84,8 @@ public class MessageBean implements Serializable{
 	}
 
 	public String delete() {
-		//TODO
-		System.out.println("delete()/////////////////////////////////////////////");
 		messageManager.deleteMessage(message);
-		return "";
+		return "ProfilePage.xhtml";
 	}
 	
 	public String reset() {
@@ -92,19 +94,11 @@ public class MessageBean implements Serializable{
 	}
 	
 	public String editMessage(){
-		//TODO
-		System.out.println("editMessage()/////////////////////////////////////////////");
-		System.out.println(message.getID());
-		System.out.println(message.getMessage());
-		System.out.println(message.getLikes());
-		System.out.println(message.getUserName());
 		messageManager.updateMessage(message);
-		return "";
+		return "MessagePage.xhtml";
 	}
 	
 	public void editListener(AjaxBehaviorEvent e) {
-		System.out.println("Before: " + this.canEdit);
 		canEdit = !canEdit;
-		System.out.println("After: " + this.canEdit);
 	}
 }

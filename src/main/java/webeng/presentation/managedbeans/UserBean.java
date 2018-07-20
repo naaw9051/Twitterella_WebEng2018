@@ -17,13 +17,20 @@ import webeng.tranferobjects.User;
 @SessionScoped
 public class UserBean implements Serializable {
 	
-	User user = new User();
-	static User loginUser = new User();
-	UserManager userManager = new UserManager();
-	List<User> users = null;
-	String searchText = null;
+	static User loginUser;
+	User user;
+	UserManager userManager;
+	List<User> users;
+	String searchText;
 	boolean loggedIn;
 	boolean loggedInUser;
+	
+	public UserBean() {
+		this.user = new User();
+		this.userManager = new UserManager();
+		this.searchText = "";
+		this.users = this.userManager.findAllUsers(getSearchText());
+	}
 	
 	public void setUser(User user){
 		this.user = user;
@@ -62,14 +69,9 @@ public class UserBean implements Serializable {
 		
 		if(loginUser != null && this.user.getName().equals(loginUser.getName())){
 			logged = true;
-			//System.out.println("this is your page, " + loginUser.getName());
 		}
 		else {
 			logged = false;
-			if(loginUser != null && this.user != null)
-				System.out.println("you clicked on " + this.user.getName() + " and this user is logged in: "+loginUser.getName());
-			else
-				System.out.println("null");
 		}
 		return logged;
 	}
@@ -98,14 +100,14 @@ public class UserBean implements Serializable {
 		} else{
 			setLoggedIn(false);
 			//Fehler: Authentifizierung fehlgeschlagen
-			this.user = null; //?? Sonst wird Passwort und Name gespeichert
+			this.user = new User(); 
 			return "failed";
 		}	
 	}
 	
 	public String logout() {
 		setLoggedIn(false);
-		this.user = null;
+		this.user = new User();
 		loginUser = this.user;
 		return "LogoutPage.xhtml";
 	}
@@ -113,7 +115,7 @@ public class UserBean implements Serializable {
 	public String register() {
 		if(nameIsValid(this.user.getName())) {
 			this.userManager.addUser(this.user);
-			this.user = null;
+			this.user = new User();
 			return "success";
 		}
 		else {
