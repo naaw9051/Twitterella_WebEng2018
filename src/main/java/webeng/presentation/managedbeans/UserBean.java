@@ -1,6 +1,7 @@
 package webeng.presentation.managedbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -29,7 +30,7 @@ public class UserBean implements Serializable {
 		this.user = new User();
 		this.userManager = new UserManager();
 		this.searchText = "";
-		this.users = this.userManager.findAllUsers(getSearchText());
+		this.users = new ArrayList<User>();
 	}
 	
 	public void setUser(User user){

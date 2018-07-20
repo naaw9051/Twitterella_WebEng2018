@@ -25,7 +25,7 @@
 		<p><button class="profilepicture page"><h:outputText value="#{userBean.user.name}"/></button></p>
    
    <h:form class="form-inline justify-content-center">
-	<h:panelGrid id="grid" column="2" rendered="#{userBean.loggedIn}">
+	<h:panelGrid id="grid" column="2" rendered="#{userBean.loggedInUser}">
 	
 		<h:outputLabel value="Nachricht posten:" for="post"/>
 		<h:inputTextarea row = "10" col = "10"  id="post" value="#{messageBean.message.message}"/>
